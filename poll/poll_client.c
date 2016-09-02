@@ -25,8 +25,8 @@ int main()
 
     printf("start send msg\n");
     for(int i = 0; i < 60; i++){
-        printf("pusher\n");
-        check_result(zmq_send(pusher, "pusher", sizeof("pusher"), 0) > 0);
+        //printf("pusher\n");
+        //check_result(zmq_send(pusher, "pusher", sizeof("pusher"), 0) > 0);
         printf("publisher\n");
         check_result(zmq_send(publisher, "publisher", sizeof("publisher"), 0) > 0);
         sleep(1);

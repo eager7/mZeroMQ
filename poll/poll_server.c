@@ -42,9 +42,9 @@ int main(void)
                 printf("error:%s\n", strerror(errno));
             break;
             default:{
-                printf("event[%d][%d]\n", items[0].events, items[1].events);
+                printf("event[%d-%d][%d-%d]\n", items[0].events, items[1].events, items[0].revents, items[1].revents);
                 for(int i = 0; i < len; i++){
-                    if(items[i].events & ZMQ_POLLIN){
+                    if((items[i].events & ZMQ_POLLIN) && (items[i].revents > 0)){
                         printf("get event[%d]\n", i);
                         int ret = zmq_recv(items[i].socket, recv_buf, sizeof(recv_buf), ZMQ_DONTWAIT);
                         if(ret > 0){
