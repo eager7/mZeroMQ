@@ -5,7 +5,8 @@ int main(void)
 {
     void *context = zmq_ctx_new();
     void *requester = zmq_socket(context, ZMQ_REQ);
-    zmq_connect(requester, "tcp://127.0.0.1:5560");
+    int ret = zmq_connect(requester, "tcp://127.0.0.1:5560");
+    assert(ret == 0);
 
     while (1) {
         char *string = s_recv(requester);

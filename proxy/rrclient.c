@@ -4,7 +4,8 @@ int main(void)
 {
     void *context = zmq_ctx_new();
     void *requester = zmq_socket(context, ZMQ_REQ);
-    zmq_connect(requester, "tcp://127.0.0.1:5559");
+    int ret = zmq_connect(requester, "tcp://127.0.0.1:5559");
+    assert(ret == 0);
 
     for (int i = 0; i < 10; ++i) {
         s_send(requester, "hello");
